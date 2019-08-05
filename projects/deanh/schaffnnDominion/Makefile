@@ -1,4 +1,4 @@
-CFLAGS= -Wall -fpic -coverage -lm -std=c99
+CFLAGS= -Wall -fpic -coverage -lm -std=c99 -ggdb
 
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
@@ -224,19 +224,23 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c car
 # 	gcov dominion.c -f >> unittestresults.out
 # 	echo "**********************************************" >> unittestresults.out
 
-
+.PHONY: unittest1
 unittest1: unittest1.c dominion.o
 	gcc -o unittest1 dominion.c rngs.c unittest1.c $(CFLAGS)
 
+.PHONY: unittest2
 unittest2: unittest2.c dominion.o
 	gcc -o unittest2 dominion.c rngs.c unittest2.c $(CFLAGS)
 
+.PHONY: unittest3
 unittest3: unittest3.c dominion.o
 	gcc -o unittest3 dominion.c rngs.c unittest3.c $(CFLAGS)
 
+.PHONY: unittest4
 unittest4: unittest4.c dominion.o
 	gcc -o unittest4 dominion.c rngs.c unittest4.c $(CFLAGS)
 
+.PHONY: unittest5
 unittest5: unittest5.c dominion.o
 		gcc -o unittest5 dominion.c rngs.c unittest5.c $(CFLAGS)
 
